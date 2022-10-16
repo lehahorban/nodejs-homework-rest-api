@@ -1,7 +1,7 @@
 const {Contact} = require("../../models/contact")
 const { RequestError } = require("../../helpers")
 
-const updateFavorite = async (req, res, next) => {
+const updateStatusContact = async (req, res, next) => {
 
     const { contactId } = req.params;   
    
@@ -15,4 +15,4 @@ const updateFavorite = async (req, res, next) => {
 }
 
 
-module.exports = updateFavorite
+module.exports = updateStatusContact
