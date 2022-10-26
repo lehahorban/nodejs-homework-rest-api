@@ -24,15 +24,6 @@ const userSchema = new Schema({
 }, {versionKey: false, timestamps: true})
 
 
-// const joiSchema = Joi.object({
-//   password: Joi.string().required(),
-//     email: Joi.string().required(),
-//     subscription: Joi.string().required(),
-//     token: Joi.string().required(),
-  
-// })
-
-
 const joiRegisterSchema = Joi.object({
   password: Joi.string().required(),
   email: Joi.string().required(),
