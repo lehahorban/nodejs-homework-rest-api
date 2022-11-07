@@ -49,6 +49,10 @@ const joiLoginSchema = Joi.object({
   email: Joi.string().required(),
 });
 
+const verifyEmailSchema = Joi.object({ 
+  email: Joi.string().required(),
+});
+
 
 const User = model('user', userSchema)
 userSchema.post("save", handleShemaValidationErrors)
@@ -57,7 +61,8 @@ userSchema.post("save", handleShemaValidationErrors)
 const schemas = {
    userSchema,
   joiRegisterSchema,
-   joiLoginSchema,
+  joiLoginSchema,
+   verifyEmailSchema
 }
 
 

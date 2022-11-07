@@ -1,9 +1,9 @@
 const { User } = require('../../models/user')
-const { RequestError, sendEmail } = require('../../helpers')
+const { RequestError, sendEmail, createVerifyEmail } = require('../../helpers')
 const bcrypt = require("bcryptjs")
 const gravatar = require("gravatar")
 const { nanoid } = require("nanoid")
-const {BASE_URL} = process.env
+
 
 
 const register = async (req, res) => {
@@ -19,11 +19,7 @@ const register = async (req, res) => {
     const verificationToken = nanoid()
     const result = await User.create({ email, password: hashPassword, subscription, avatarURL, verificationToken })
     
-    const mail = {
-        to: email,
-        subject: "Verify email",
-        html: `<a target="_blank" href="${BASE_URL}/api/users/verify/${verificationToken}">Click verify email</a>`
-    }
+    const mail = createVerifyEmail(email, verificationToken)
     
     await sendEmail(mail)
 

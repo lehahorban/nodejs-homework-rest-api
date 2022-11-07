@@ -10,6 +10,8 @@ router.post("/signup", validateBody(schemas.joiRegisterSchema), ctrlWrapper(ctrl
 
 router.get("/verify/:verificationToken", ctrlWrapper(ctrl.verify))
 
+router.post("/verify", validateBody(schemas.verifyEmailSchema), ctrlWrapper(ctrl.resendEmail))
+
 router.post("/login", validateBody(schemas.joiLoginSchema), ctrlWrapper(ctrl.login))
 
 router.get("/logout", auth, ctrlWrapper(ctrl.logout))
